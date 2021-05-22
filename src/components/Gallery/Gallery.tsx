@@ -122,12 +122,16 @@ export default function Gallery(props: GalleryProps) {
   };
 
   useEffect(() => {
-    if (photoList.length > loadedPhotoesCount) {
-      setIsLoading(true);
+    //when displayimg all uploaded photoes, need to show loading
+    if(isEditView){
+      if (photoList.length > loadedPhotoesCount) {
+        setIsLoading(true);
+      }
+      if (photoList.length == loadedPhotoesCount) {
+        setIsLoading(false);
+      }
     }
-    if (photoList.length == loadedPhotoesCount) {
-      setIsLoading(false);
-    }
+
   }, [loadedPhotoesCount]);
 
   //this is will fire when user confirm gererate best photo grid
