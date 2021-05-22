@@ -188,9 +188,9 @@ export default function Gallery(props: GalleryProps) {
           </Grid>
         </Grid>
       )}
-      <GridList cellHeight={280} cols={3}>
+      <GridList cols={3}>
         {photoList.map((photo) => (
-          <GridListTile key={photo.id}>
+          <GridListTile rows={2} key={photo.id}>
             <img
               src={photo.picture}
               onClick={(e) => handlePhotoClick(photo)}
