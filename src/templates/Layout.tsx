@@ -13,29 +13,25 @@ import useStyles from "./Layout.css";
 import translation from "../i18n/i18.json";
 import { useHistory } from "react-router-dom";
 import { NavigationPaths } from "../constants/AppConatants";
-import EditIcon from "@material-ui/icons/Edit";
-import MoreVertIcon from '@material-ui/icons/MoreVert';
+import MoreVertIcon from "@material-ui/icons/MoreVert";
 
 export default function Layout(props: any) {
   const classes = useStyles();
   const history = useHistory();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
-  const options = [
-    translation.header_toolbar_edit_btn_text,
-    translation.header_toolbar_goalbum_btn_text,
-  ];
+
   const handleMenuClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
 
-  const handleMenuItemClick = (event:any) => {
-      if(event.currentTarget.value == 0){
-        history.push(NavigationPaths.PhotoSeletion);
-      }
-      else {
-        history.push(NavigationPaths.PhotoGrid);
-      }
+  const handleEditClick = (event: any) => {
+    handleClose();
+    history.push(NavigationPaths.PhotoSeletion);
+  };
+  const handleAlbumClick = (event: any) => {
+    handleClose();
+    history.push(NavigationPaths.PhotoGrid);
   };
 
   const handleClose = () => {
@@ -55,43 +51,22 @@ export default function Layout(props: any) {
             color="primary"
           >
             <Grid item>
-                    <IconButton
+              <IconButton
                 aria-label="more"
                 aria-controls="long-menu"
                 aria-haspopup="true"
                 onClick={handleMenuClick}
-            >
+              >
                 <MoreVertIcon />
-            </IconButton>
-            <Menu
-        anchorEl={anchorEl}
-        open={open}
-        onClose={handleClose}
-      >
-        {options.map((option) => (
-          <MenuItem key={option}  onClick={handleMenuItemClick}>
-            {option}
-          </MenuItem>
-        ))}
-      </Menu>
-              {/* {!isEditVisible && (
-                <Button
-                  variant="contained"
-                  color="secondary"
-                  onClick={(e) => handleEditClick(e)}
-                >
+              </IconButton>
+              <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
+                <MenuItem onClick={handleEditClick}>
                   {translation.header_toolbar_edit_btn_text}
-                </Button>
-              )}
-              {isEditVisible && (
-                <Button
-                  variant="contained"
-                  color="secondary"
-                  onClick={(e) => handleGoToAlbumClick(e)}
-                >
+                </MenuItem>
+                <MenuItem onClick={handleAlbumClick}>
                   {translation.header_toolbar_goalbum_btn_text}
-                </Button>
-              )} */}
+                </MenuItem>
+              </Menu>
             </Grid>
           </Grid>
         </Toolbar>

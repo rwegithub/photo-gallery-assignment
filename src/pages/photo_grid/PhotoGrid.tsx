@@ -11,18 +11,18 @@ export default function PhotoGrid() {
   const [photoList, setPhotoList] = useState<Photo[]>([]);
   //display/hide loading
   const [isLoading, setIsLoading] = useState(false);
-    //infor message related
-    const [showInforMsg, setShowInforMsg] = React.useState(false);
-    const [inforSeverity, setInforSeverity] = React.useState(AppInfoType.error);
-    const [inforMsg, setInforMsg] = React.useState("");
-    //infor message related
+  //infor message related
+  const [showInforMsg, setShowInforMsg] = React.useState(false);
+  const [inforSeverity, setInforSeverity] = React.useState(AppInfoType.error);
+  const [inforMsg, setInforMsg] = React.useState("");
+  //infor message related
 
- //show infro message
- const showInforMessage = (message:string, severity:AppInfoType) => {
+  //show infro message
+  const showInforMessage = (message: string, severity: AppInfoType) => {
     setInforSeverity(severity);
     setInforMsg(message);
     setShowInforMsg(true);
-  }
+  };
 
   //on page load - get saved best photo list
   useEffect(() => {
@@ -38,15 +38,16 @@ export default function PhotoGrid() {
       function (error: Error) {
         console.log(error);
         setIsLoading(false);
-        showInforMessage(translation.photo_grid_photoes_retrive_err,  AppInfoType.error);
+        showInforMessage(
+          translation.photo_grid_photoes_retrive_err,
+          AppInfoType.error
+        );
       }
     );
-  }, [])
+  }, []);
 
-  const onSaveSelectedPotoes = (slecetedPhotList: Array<Photo>) => {
-    //history.push(NavigationPaths.PhotoGrid);
-  };
-  
+  const onSaveSelectedPotoes = (slecetedPhotList: Array<Photo>) => {};
+
   return (
     <div>
       <Gallery

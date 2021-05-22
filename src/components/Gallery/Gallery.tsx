@@ -125,7 +125,7 @@ export default function Gallery(props: GalleryProps) {
     if (photoList.length > loadedPhotoesCount) {
       setIsLoading(true);
     }
-    if(photoList.length == loadedPhotoesCount){
+    if (photoList.length == loadedPhotoesCount) {
       setIsLoading(false);
     }
   }, [loadedPhotoesCount]);
@@ -138,7 +138,7 @@ export default function Gallery(props: GalleryProps) {
       bestPhotoes,
       function (updatedPhotoList: Array<Photo>) {
         setIsLoading(false);
-            //call parent after saving
+        //call parent after saving
         if (updatedPhotoList && updatedPhotoList.length > 0) {
           onSaveSelectedPotoes(updatedPhotoList);
         }
@@ -156,12 +156,14 @@ export default function Gallery(props: GalleryProps) {
   return (
     <div>
       {isEditView && (
-        <Grid container
-        direction="row"
-        justify="center"
-        spacing={2}
-        alignItems="center"
-        color="primary">
+        <Grid
+          container
+          direction="row"
+          justify="space-between"
+          spacing={3}
+          alignItems="center"
+          color="primary"
+        >
           <Grid item>
             <Typography>{translation.gallery_instruction_txt}</Typography>
           </Grid>
@@ -172,7 +174,7 @@ export default function Gallery(props: GalleryProps) {
                 bestPhotoes.length > UtilConstants.PhotoGrid_Max
               }
               variant="contained"
-              color="inherit"
+              color="primary"
               onClick={(e) => {
                 handleConfirmSelection(e);
               }}

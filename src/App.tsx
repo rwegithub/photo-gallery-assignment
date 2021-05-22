@@ -8,7 +8,7 @@ import PhotoSelection from "./pages/photo_selection/PhotoSelection";
 import { NavigationPaths } from "./constants/AppConatants";
 import Layout from "./templates/Layout";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
-import {orange, grey} from "@material-ui/core/colors";
+import { orange, grey } from "@material-ui/core/colors";
 
 const theme = createMuiTheme({
   palette: {

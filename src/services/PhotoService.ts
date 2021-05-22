@@ -1,6 +1,6 @@
 import { Photo } from "../model/Photo";
 import { UserPhoto } from "../model/UserPhoto";
-import { AxiosConfig , AmazonConfig} from "./config/AxioConfig";
+import { AxiosConfig, AmazonConfig } from "./config/AxioConfig";
 
 const getAllUserPhotoes = async (
   successCallback: (photoData: UserPhoto) => void,
@@ -23,9 +23,7 @@ const getSelectedPhotoes = async (
   errorCallback: (error: Error) => void
 ) => {
   try {
-    const resp = await AxiosConfig.get(
-      "/getSelectedPhotoes"
-    );
+    const resp = await AxiosConfig.get("/getSelectedPhotoes");
     successCallback(resp.data);
   } catch (err) {
     // Handle Error Here
@@ -40,7 +38,10 @@ const saveSelectedPhotoes = async (
   errorCallback: (error: Error) => void
 ) => {
   try {
-    const resp = await AxiosConfig.post("/updateSelectedPhotoes", selectedPhotoList);
+    const resp = await AxiosConfig.post(
+      "/updateSelectedPhotoes",
+      selectedPhotoList
+    );
     successCallback(resp.data);
   } catch (err) {
     // Handle Error Here
