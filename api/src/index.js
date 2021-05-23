@@ -43,19 +43,17 @@ app.post("/updateSelectedPhotoes", async (req, res)=>{
    }
    catch(error){
         console.log(error);
-        res.send(error);
    }
 });
 
 //get saved photo list
 app.get("/getSelectedPhotoes", async (req, res)=>{
     try {
-       const all = await pictureModel.find({});
+       const all = await pictureModel.find({}).sort('order');
        res.send(all);
     }
     catch(error){
          console.log(error);
-         res.send(error);
     }
  });
 
