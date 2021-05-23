@@ -1,13 +1,8 @@
-FROM node:8
-# Create app directory
+FROM node:14-slim
+ENV NODE_ENV=production
 WORKDIR /usr/src/app
-# Install app dependencies
-COPY package*.json ./
-
-RUN npm install
-# Copy app source code
+COPY ["package.json", "package-lock.json*", "npm-shrinkwrap.json*", "./"]
+RUN npm install --production --silent && mv node_modules ../
 COPY . .
-
-#Expose port and start application
-EXPOSE 8080
-CMD [ "npm", "start" ]
+EXPOSE 3001
+CMD ["node", "src/index.js"]
