@@ -10,9 +10,12 @@ app.use(express.json());
 app.use(cors())
 
 //data base connection
-mongoose.connect("mongodb://localhost:27017/assignment_db", {
-    useNewUrlParser:true
-});
+mongoose.connect("mongodb://localhost:27017/assignment_db", {useNewUrlParser: true})
+.then(() => console.log("Connected"))
+.catch(err => console.log(err));
+// var connection = mongoose.connect("mongodb://localhost:27017/assignment_db", {
+//     useNewUrlParser:true
+// });
 
 //photo slection save
 //Input: List of photoes : pictureScema objects
@@ -40,6 +43,7 @@ app.post("/updateSelectedPhotoes", async (req, res)=>{
    }
    catch(error){
         console.log(error);
+        res.send(error);
    }
 });
 
@@ -51,6 +55,7 @@ app.get("/getSelectedPhotoes", async (req, res)=>{
     }
     catch(error){
          console.log(error);
+         res.send(error);
     }
  });
 
